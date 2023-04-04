@@ -1,7 +1,7 @@
 import getFormattedWeatherData from "./weatherService";
 
 const fetchWeather = async (param = "london") => {
-  console.log("PARAMS",param);
+  console.log("PARAMS", param);
   try {
     const data = await getFormattedWeatherData({ q: param });
     console.log("fetchWeather DATA", data);
@@ -10,6 +10,4 @@ const fetchWeather = async (param = "london") => {
   }
 };
 
-
-
-export default fetchWeather
+export default fetchWeather;
