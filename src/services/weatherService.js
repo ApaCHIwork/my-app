@@ -1,4 +1,3 @@
-import Title from "antd/es/skeleton/Title";
 import { DateTime } from "luxon";
 
 const API_KEY = "48790b76e580b27666554fa7181175e0";
@@ -11,49 +10,20 @@ const ONECALL_URL = "https://api.openweathermap.org/data/3.0";
 // https://api.openweathermap.org/data/2.5/onecall?lat=48.8534&
 // lon-2.3488&exclude=current, minutely, hourly, alerts& appid-1fa9ff4126d95b8db54f3897a208e91c&units=metric
 
-const getWeatherData = (infoType, searchParams) => {
+const getWeatherData = async (infoType, searchParams) => {
   const url = new URL(MAIN_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
-  console.log(url);
-  return fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
-    .catch((error) => console.log("CATCH", error));
-};
-
-const formatCurrentWeather = (data) => {
-  console.log(data);
-  const {
-    coord: { lat, lon },
-    main: { feels_like, humidity, pressure, temp, temp_max, temp_min },
-    name,
-    dt,
-    sys: { country, sunrize, sunset },
-    weather,
-    wind: { speed },
-  } = data;
-  const { main: details, icon } = weather[0];
-  return {
-    lat,
-    lon,
-    feels_like,
-    humidity,
-    pressure,
-    temp,
-    temp_max,
-    temp_min,
-    name,
-    dt,
-    country,
-    sunrize,
-    sunset,
-    details,
-    icon,
-    speed,
-  };
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("CATCH", error);
+    throw error; // Перекинути помилку далі
+  }
 };
 
 const formatForecastWeather = (data) => {
@@ -86,43 +56,13 @@ const formatToLocalTime = (
 
 //need fix
 const getFormattedWeatherData = async (searchParams) => {
-  return getWeatherData("weather", searchParams)
-    .then(formatCurrentWeather)
-    .then((response) => {
-      const { lat, lon } = response;
-      getWeatherData("forecast", {
-        //units use for change C to F
-        lat,
-        lon,
-      });
-      //.then(formatForecastWeather);
-    })
-    .catch((error) => console.log("ERROR", error));
-
-  // try{
-  //   const formattedCurrentWeather = await getWeatherData(
-  //     "weather",
-  //     searchParams
-  //   )
-  //   formatCurrentWeather(formattedCurrentWeather);
-  //   const { lat, lon } = formattedCurrentWeather;
-
-  // } catch(error){
-  //   //обробити error
-  //   console.log("ERROR in weatherService")
-  // }
-
-  //try to  return hourly weather data forecast
-  // const formattedForecastWeather = await getWeatherData("onecall",
-  // {
-  //   //units use for change C to F
-  //   lat,
-  //   lon,
-  //   exclude: "current,minutely,alerts",
-  //   units: searchParams.units
-  // }).then(formatForecastWeather);
-
-  // return { ...formattedCurrentWeather, ...formattedForecastWeather };
+  try {
+    const weatherData = await getWeatherData("weather", searchParams);
+    return weatherData;
+  } catch (error) {
+    console.log("ERROR", error);
+    throw error; // Перекинути помилку далі
+  }
 };
 
 //works

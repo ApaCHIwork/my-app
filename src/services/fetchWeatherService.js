@@ -3,8 +3,8 @@ import getFormattedWeatherData from "./weatherService";
 const fetchWeather = async (param = "london") => {
   console.log("PARAMS", param);
   try {
-    const data = await getFormattedWeatherData({ q: param });
-    console.log("fetchWeather DATA", data);
+    let date = await getFormattedWeatherData({ q: param, units: "metric" });
+    return date; // Повернути результат без проміса
   } catch (error) {
     console.log("Some error in service" + error);
   }
