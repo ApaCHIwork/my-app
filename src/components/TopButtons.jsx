@@ -1,15 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import fetchWeather from "../services/fetchWeatherService";
 
-
-const handleButtonClick = (param) => {
-  console.log("По кнопке кликнули: ", param);
-  fetchWeather(param)
-  //fetchWeather(inputValue);
-};
-
-
-function TopButtons() {
+function TopButtons({ handleButtonClick }) {
   const cities = [
     {
       id: 1,
