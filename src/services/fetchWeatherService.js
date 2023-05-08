@@ -1,7 +1,6 @@
-import getFormattedWeatherData from "./weatherService";
+import { getFormattedWeatherData, getWeatherData5Day } from "./weatherService";
 
-const fetchWeather = async (param = "london") => {
-  console.log("PARAMS", param);
+export const fetchWeather = async (param = "london") => {
   try {
     let date = await getFormattedWeatherData({ q: param, units: "metric" });
     return date; // Повернути результат без проміса
@@ -10,4 +9,11 @@ const fetchWeather = async (param = "london") => {
   }
 };
 
-export default fetchWeather;
+export const fetchWeather5Day = async (param = "london") => {
+  try {
+    let date = await getWeatherData5Day({ q: param, units: "metric" });
+    return date; // Повернути результат без проміса
+  } catch (error) {
+    console.log("Some error in service" + error);
+  }
+};

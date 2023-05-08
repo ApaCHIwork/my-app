@@ -1,11 +1,9 @@
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme } from "antd";
 import React from "react";
 import Inputs from "./Inputs";
 const { Header, Content, Footer, Sider } = Layout;
 
-
 const Asd = () => {
-
   return (
     <Layout hasSider className="flex">
       <Sider
@@ -21,26 +19,26 @@ const Asd = () => {
       <Layout
         className="site-layout w-6/12 flex justify-center"
         style={{
-          marginLeft: 0
+          marginLeft: 0,
         }}
       >
         <Header
           style={{
             padding: 0,
-            background: "blue"
+            background: "blue",
           }}
         />
         <Content
           style={{
             margin: "24px 16px 0",
-            overflow: "initial"
+            overflow: "initial",
           }}
         >
           <div
             style={{
               padding: 24,
               textAlign: "center",
-              background: "red"
+              background: "red",
             }}
           >
             <p> content</p>

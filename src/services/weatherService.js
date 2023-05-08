@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 
 const API_KEY = "48790b76e580b27666554fa7181175e0";
+// const API_KEY = "d5d51a990569975c4dff09bdb8feffa0";
 
 // const API_KEY = "510cd0b2236762ab68abee5054069515"; api indianos
 
@@ -55,9 +56,19 @@ const formatToLocalTime = (
 ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
 //need fix
-const getFormattedWeatherData = async (searchParams) => {
+export const getFormattedWeatherData = async (searchParams) => {
   try {
     const weatherData = await getWeatherData("weather", searchParams);
+    return weatherData;
+  } catch (error) {
+    console.log("ERROR", error);
+    throw error; // Перекинути помилку далі
+  }
+};
+
+export const getWeatherData5Day = async (searchParams) => {
+  try {
+    const weatherData = await getWeatherData("forecast", searchParams);
     return weatherData;
   } catch (error) {
     console.log("ERROR", error);
@@ -74,5 +85,3 @@ const getFormattedWeatherData = async (searchParams) => {
 
 //   return formattedCurrentWeather;
 // };
-
-export default getFormattedWeatherData;
