@@ -13,7 +13,10 @@ const ONECALL_URL = "https://api.openweathermap.org/data/3.0";
 
 const getWeatherData = async (infoType, searchParams) => {
   const url = new URL(MAIN_URL + "/" + infoType);
-  url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
+  url.search = new URLSearchParams({
+    ...searchParams,
+    appid: API_KEY,
+  });
   try {
     const response = await fetch(url);
     if (!response.ok) {

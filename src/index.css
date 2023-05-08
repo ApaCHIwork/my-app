@@ -10,4 +10,5 @@ body {
   width: 100%;
   max-width: 480px;
   min-height: 480px;
+  background: url("./img/bg.png") no-repeat center/cover;
 }
