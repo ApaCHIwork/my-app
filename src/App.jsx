@@ -17,6 +17,7 @@ function App() {
   };
 
   console.log(weatherData);
+  //new comment
 
   return (
     <div className="flex justify-center items-center h-screen">
