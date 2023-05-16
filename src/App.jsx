@@ -4,6 +4,7 @@ import Inputs from "./components/Inputs";
 import TopButtons from "./components/TopButtons";
 import Asd from "./components/Asd";
 import WeatherMain from "./components/main";
+import FiveDay from "./components/fiveday";
 
 function App() {
   const [weatherData, setWeatherData] = useState();
@@ -141,7 +142,14 @@ function App() {
           )}
           </div>
           <div className="w-7/12">
-            <TopButtons handleButtonClick={handleButtonClick} />
+            <div className="flex flex-wrap">
+              <div className="w-full">
+                <FiveDay fiveDayWetherData={fiveDayWetherData}></FiveDay>
+              </div>
+              <div className="w-full">
+                <TopButtons handleButtonClick={handleButtonClick} />
+              </div>
+            </div>
           </div>
         </div>
         

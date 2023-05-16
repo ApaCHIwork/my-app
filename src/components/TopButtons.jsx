@@ -49,7 +49,7 @@ function TopButtons({ handleButtonClick }) {
   }
 
   return (
-    <div className="flex items-center justify-between p-6 mt-4 rounded-xl bg-violet-400">
+    <div className="flex items-center justify-between p-6 mt-6 rounded-xl bg-violet-400">
       {cities.map((city, index) => (
         <div key={index}>
           {city.info && (
