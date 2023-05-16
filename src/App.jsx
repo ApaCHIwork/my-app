@@ -25,7 +25,6 @@ function App() {
           <Inputs handleButtonClick={handleButtonClick} />
         </div>
         <div className="flex justify-center items-center gap-5">
-          <div className="w-5/12">
           {weatherData && (
             <div className="wetherBlock flex justify-center relative p-3 rounded-xl">
               <div className="w-full text-white text-lg font-medium">
@@ -138,7 +137,7 @@ function App() {
               </div>
             </div>
           )}
-          </div>
+         
           <div className="w-7/12 ">
             <div className="flex flex-wrap h-auto">
               <div className="w-full">
