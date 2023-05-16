@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { fetchWeather, fetchWeather5Day } from "./services/fetchWeatherService";
 import Inputs from "./components/Inputs";
 import TopButtons from "./components/TopButtons";
-import Asd from "./components/Asd";
-import WeatherMain from "./components/main";
 import FiveDay from "./components/fiveday";
 
 function App() {
@@ -61,11 +59,11 @@ function App() {
                     </span>
                   </p>
                   <p className="text-center">
-                    <span className="text-1xl mr-2" id="temperature">
+                    <span className="text-1xl mr-2">
                       {Math.round(weatherData.main.temp_max)}
                       <sup>o</sup>
                     </span>
-                    <span className="text-1xl text-violet-200" id="temperature">
+                    <span className="text-1xl text-violet-200">
                       {Math.round(weatherData.main.temp_min)}
                       <sup>o</sup>
                     </span>
@@ -141,8 +139,8 @@ function App() {
             </div>
           )}
           </div>
-          <div className="w-7/12">
-            <div className="flex flex-wrap">
+          <div className="w-7/12 ">
+            <div className="flex flex-wrap h-auto">
               <div className="w-full">
                 <FiveDay fiveDayWetherData={fiveDayWetherData}></FiveDay>
               </div>
@@ -152,10 +150,7 @@ function App() {
             </div>
           </div>
         </div>
-        
-        <WeatherMain weatherData={weatherData}></WeatherMain>
       </div>
-      {/* <Asd /> */}
     </div>
   );
 }

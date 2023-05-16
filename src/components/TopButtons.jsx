@@ -49,14 +49,14 @@ function TopButtons({ handleButtonClick }) {
   }
 
   return (
-    <div className="flex items-center justify-between p-6 mt-6 rounded-xl bg-violet-400">
+    <div className="flex items-center justify-between px-6 py-14 mt-8 rounded-xl bg-violet-500/30">
       {cities.map((city, index) => (
         <div key={index}>
           {city.info && (
             <button
               onClick={() => handleButtonClick(city.title)}
               key={city.id}
-              className="text-white text-sm font-medium"
+              className="text-white text-lg font-medium"
             >
               <div className="text-center">
                   <span className="text-violet-200">
@@ -68,11 +68,11 @@ function TopButtons({ handleButtonClick }) {
                     className="mx-auto"
                   />
                   <p className="text-center">
-                    <span className="text-1xl mr-2" id="temperature">
+                    <span className="text-1xl mr-2">
                       {Math.round(city.info.main.temp_max)}
                       <sup>o</sup>
                     </span>
-                    <span className="text-1xl text-violet-200" id="temperature">
+                    <span className="text-1xl text-violet-200">
                       {Math.round(city.info.main.temp_min)}
                       <sup>o</sup>
                     </span>
